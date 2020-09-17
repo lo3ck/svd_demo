@@ -3,6 +3,7 @@
 extern double **dmatrix(int, int, int, int);
 extern double *dvector(int, int);
 extern void svdcmp(double **, int, int, double *, double **);
+extern void pca(double **x, int m, int n, int k, double **y);
 
 int main() {
 	double **a;
@@ -33,6 +34,9 @@ int main() {
 		printf("%le %le %le\n",u[i][1],u[i][2],u[i][3]);
 	}
 
+	pca(u, 3, 3, 2, v);
+
+	#if 0
 	svdcmp(u,3,3,w,v);
 
 	/* Sort the singular values in descending order */
@@ -62,6 +66,6 @@ int main() {
 		printf("Sigular value %d = %le\n",i,w[i]);
 		printf("        vector   = %le %le %le\n",u[1][i],u[2][i],u[3][i]);
 	}
-
+	#endif
 	return 0;
 }

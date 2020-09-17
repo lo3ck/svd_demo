@@ -39,18 +39,27 @@ else()
     
     add_compile_options(-g)
     add_compile_options(-O0)
+    add_compile_options(-fopenmp)
+    add_compile_options(-mavx)
+    add_compile_options(-mfma)
+    add_compile_options(-ffast-math)
     add_compile_options(-D PLATFORM_X86)
 endif()
 
-
+FIND_PACKAGE( OpenMP REQUIRED)
+if (OPENMP_FOUND OR OpenMP_CXX_FOUND) 
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
 add_compile_options(-Wall)
 
 find_package( Threads )
 find_library(M_LIB m)
 
 
-include_directories( include )
+include_directories( ./eigen3 )
  
 SUBDIRS( svd
-         
+         eigen_demo
          )	
