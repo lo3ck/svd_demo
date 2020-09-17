@@ -78,6 +78,7 @@
         "condition_variable": "cpp",
         "ratio": "cpp",
         "shared_mutex": "cpp",
-        "core": "cpp"
+        "core": "cpp",
+        "complex": "cpp"
     }
 }
