@@ -22,7 +22,7 @@ if [ "$1"x = "run"x ]; then
     cd $build_dir
     make
     cd $output_dir
-    time ./eigen_demo
+    time ./eigen_demo2
     exit
 fi
 

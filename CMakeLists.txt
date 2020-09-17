@@ -61,5 +61,5 @@ find_library(M_LIB m)
 include_directories( ./eigen3 )
  
 SUBDIRS( svd
-         eigen_demo
+         eigen_demo2
          )	

@@ -62,7 +62,7 @@ void PCA(float* pData, int m, int n, int K)
             mat(i, j) = *pBuf++;
         }
     }
-    SaveMatrix(mat, m, n, "/mnt/d/workspace/matlab/11_211_pca_ori.txt");
+    SaveMatrix(mat, m, n, "/home/lo3ck/workspace/sourcecode/infieit/output/linux_x86_clinic/tmp/11_211_pca_ori.txt");
     print_matrix("start", mat, m , n);
 
     VectorXf mean_x(n);
@@ -85,7 +85,7 @@ void PCA(float* pData, int m, int n, int K)
     print_matrix("x trans * x", mat_trans, n , m);
 
     //Eigen::BDCSVD <Eigen::MatrixXf> svd(mat_trans, Eigen::ComputeThinV );
-    MatrixXf V(m, n);
+    MatrixXf V(n, n);
     #if 1
     Eigen::BDCSVD <Eigen::MatrixXf> svd;
     svd.compute(mat_trans, Eigen::ComputeThinV);
@@ -114,7 +114,7 @@ void PCA(float* pData, int m, int n, int K)
 
     MatrixXf y = b_p *(b_p_plus.inverse() * (b_p_trans * mat));
     print_matrix("PCA Result", y, m , n);
-    SaveMatrix(y, m, n, "/mnt/d/workspace/matlab/11_211_pca_after.txt");
+    SaveMatrix(y, m, n, "/home/lo3ck/workspace/sourcecode/infieit/output/linux_x86_clinic/tmp/11_211_pca_after.txt");
 }
 
 
@@ -131,7 +131,7 @@ int main()
     #else 
     int m = 201, n = 416, K = 2;
     float buffer[m * n];
-    LoadData(buffer, m, n, "/mnt/d/workspace/matlab/11_211_ori.txt");
+    LoadData(buffer, m, n, "/home/lo3ck/workspace/sourcecode/infieit/output/linux_x86_clinic/tmp/11_211_ori.txt");
 #endif
     PCA(buffer, m, n, K);
 }
