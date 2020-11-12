@@ -177,6 +177,11 @@ class DenseCoeffsBase<Derived,ReadOnlyAccessors> : public EigenBase<Derived>
     EIGEN_STRONG_INLINE CoeffReturnType
     operator()(Index index) const
     {
+      if (index < 0 || index >= size())
+      {
+        printf("index: %d, %d\n", index, size());
+        index = 0;
+      }
       eigen_assert(index >= 0 && index < size());
       return coeff(index);
     }

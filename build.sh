@@ -20,7 +20,7 @@ fi
 
 if [ "$1"x = "run"x ]; then
     cd $build_dir
-    make
+    make -j16
     cd $output_dir
     time ./eigen_demo2
     exit

@@ -37,13 +37,13 @@ else()
     set(EGL_LIBRARY ${EXECUTABLE_OUTPUT_PATH}/lib/libEGL.so)
     set(OPENGLES3_LIBRARY ${EXECUTABLE_OUTPUT_PATH}/lib/libGLESv2.so)
     
-    add_compile_options(-g)
-    add_compile_options(-O0)
+    #add_compile_options(-g)
+    add_compile_options(-O3)
     add_compile_options(-fopenmp)
     add_compile_options(-mavx)
     add_compile_options(-mfma)
-    add_compile_options(-ffast-math)
-    add_compile_options(-D PLATFORM_X86)
+    #add_compile_options(-ffast-math)
+    add_definitions(-DPLATFORM_X86 -DEIGEN_USE_LAPACKE)
 endif()
 
 FIND_PACKAGE( OpenMP REQUIRED)
@@ -60,6 +60,6 @@ find_library(M_LIB m)
 
 include_directories( ./eigen3 )
  
-SUBDIRS( svd
-         eigen_demo2
+SUBDIRS( eigen_demo2
+         
          )	
